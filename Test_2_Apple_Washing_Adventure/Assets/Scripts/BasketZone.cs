@@ -32,9 +32,11 @@ public class BasketZone : MonoBehaviour
             {
                 if (S_GameManager.AppleDirt[i] < 0)
                 {
-                    gameObject.GetComponent<DragAndDrop>().enabled = false;
+                    Destroy(other.gameObject.GetComponent<DragAndDrop>());
+                    other.gameObject.tag = "BasketApple";
 
                     S_GameManager.AppleCount--;
+                    S_GameManager._AppleCollectedAmount++;
 
 
                     //Destroy(S_GameManager.Apple[i]);
