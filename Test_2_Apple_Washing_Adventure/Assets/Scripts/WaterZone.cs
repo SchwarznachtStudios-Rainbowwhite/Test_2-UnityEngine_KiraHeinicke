@@ -16,7 +16,7 @@ public class WaterZone : MonoBehaviour
 
     private int _ApplesCleaned = 0;
 
-
+    private AudioSource Audio_AppleCleaned;
 
 
 // START
@@ -40,20 +40,24 @@ public class WaterZone : MonoBehaviour
         // if water == clean do:
         if (_IsWaterDirty == false)
         {
+            // look through all objects of the apple array
             for (int i = 0; i < S_GameManager.Apple.Length; i++)
             {
+                // checks if the object in trigger is in apple array
                 if (other.gameObject == S_GameManager.Apple[i])
                 {
+                    // counts down "Health" of dirt while apple is inside of trigger
                     S_GameManager.AppleDirt[i] = S_GameManager.AppleDirt[i] - 1;
 
+                    // once "HP" reach 0, apple is clean
                     if (S_GameManager.AppleDirt[i] == 0)
                     {
-                        // Change Color of now clean apple to red
                         _ApplesCleaned++;
+                        // change apple color to red 
                         Renderer AppleRenderer = S_GameManager.Apple[i].GetComponent<Renderer>(); 
                         AppleRenderer.material.color = Color.red;
-                        // Destroy(S_GameManager.Apple[i]);
                         // Play clean sound
+                        Audio_AppleCleaned.Play();
                     }
                 }
             }
@@ -83,6 +87,7 @@ public class WaterZone : MonoBehaviour
         _WaterDirty.enabled = false;
         _WaterClean.enabled = true;
 
+        // reset the water bool and set counter to 0 that determines if apples can be washed
         _ApplesCleaned = 0;
         _IsWaterDirty = false;
 
@@ -95,7 +100,7 @@ public class WaterZone : MonoBehaviour
         _WaterDirty = GameObject.Find("Water_dirty").GetComponent<MeshRenderer>();
         _WaterDirty.enabled = false;
 
-
+        Audio_AppleCleaned = GameObject.Find("Water_clean").GetComponent<AudioSource>();
     }
 
 }

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.dgreenheck.openfracture": "file:C:/Users/kirah/Pictures/Art School/V/Unity/Packages/OpenFracture-main",
     "com.unity.collab-proxy": "2.2.0",
     "com.unity.connect.share": "4.2.3",
     "com.unity.ide.rider": "3.0.25",

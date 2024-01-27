@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Apple
   - BasketApple
+  - Projectile
+  - BrokenApple
   layers:
   - Default
   - TransparentFX
