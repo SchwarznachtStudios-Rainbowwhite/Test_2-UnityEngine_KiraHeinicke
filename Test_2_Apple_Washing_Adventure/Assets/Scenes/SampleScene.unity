@@ -1134,7 +1134,7 @@ Transform:
   m_GameObject: {fileID: 261136231}
   serializedVersion: 2
   m_LocalRotation: {x: 1.110223e-17, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.07, y: 0, z: 1.0179896}
+  m_LocalPosition: {x: -4.07, y: 0.02, z: 1.0179896}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1161,7 +1161,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1792620481}
 --- !u!33 &261136234
@@ -3249,7 +3249,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: / 20
+  m_text: / 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4880,6 +4880,7 @@ GameObject:
   - component: {fileID: 1410669085}
   - component: {fileID: 1410669084}
   - component: {fileID: 1410669083}
+  - component: {fileID: 1410669086}
   m_Layer: 0
   m_Name: Water_dirty
   m_TagString: Untagged
@@ -4896,8 +4897,8 @@ Transform:
   m_GameObject: {fileID: 1410669080}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.769, y: 0.318, z: -0.984}
-  m_LocalScale: {x: 0.13977885, y: 0.16031, z: 0.18459696}
+  m_LocalPosition: {x: 0.754, y: 0.278, z: -0.984}
+  m_LocalScale: {x: 0.13977885, y: 0.12761799, z: 0.18459696}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 261136232}
@@ -4921,8 +4922,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.000001, y: 2.0167632, z: 10.012735}
-  m_Center: {x: 0, y: -1.1661881, z: -0.0063783834}
+  m_Size: {x: 10.000001, y: 2.4655092, z: 10.012735}
+  m_Center: {x: 0, y: -0.9418152, z: -0.0063783834}
 --- !u!23 &1410669084
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4973,6 +4974,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410669080}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1410669086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410669080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a45e281bb2202479d19e2aa51751ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1498323458
 GameObject:
   m_ObjectHideFlags: 0
@@ -4986,6 +4999,7 @@ GameObject:
   - component: {fileID: 1498323461}
   - component: {fileID: 1498323464}
   - component: {fileID: 1498323463}
+  - component: {fileID: 1498323465}
   m_Layer: 0
   m_Name: Water_clean
   m_TagString: Untagged
@@ -5002,8 +5016,8 @@ Transform:
   m_GameObject: {fileID: 1498323458}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.769, y: 0.318, z: -0.984}
-  m_LocalScale: {x: 0.13977885, y: 0.16031, z: 0.18459696}
+  m_LocalPosition: {x: 0.754, y: 0.278, z: -0.984}
+  m_LocalScale: {x: 0.13977885, y: 0.12761799, z: 0.18459696}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 261136232}
@@ -5073,6 +5087,8 @@ MonoBehaviour:
   S_GameManager: {fileID: 0}
   _WaterClean: {fileID: 0}
   _WaterDirty: {fileID: 0}
+  _WaterCleanCollider: {fileID: 0}
+  _WaterDirtyCollider: {fileID: 0}
   _IsWaterDirty: 0
 --- !u!65 &1498323464
 BoxCollider:
@@ -5093,8 +5109,104 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.000001, y: 1.8623989, z: 10.012735}
-  m_Center: {x: 0, y: -1.2433707, z: -0.0063783834}
+  m_Size: {x: 10.000001, y: 2.4534962, z: 10.012735}
+  m_Center: {x: 0, y: -0.9478216, z: -0.0063783834}
+--- !u!82 &1498323465
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498323458}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e89367f7fe862f144b4534eb9330e64d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!43 &1792620481
 Mesh:
   m_ObjectHideFlags: 0
@@ -5313,7 +5425,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   AppleCount: 0
-  AppleDirt: f4010000f4010000f4010000f4010000f4010000
+  AppleDirt: 2c0100002c0100002c0100002c0100002c010000
   AppleList_Spawned: []
   AppleList_Basket: []
   _AppleCollectedAmount: 0

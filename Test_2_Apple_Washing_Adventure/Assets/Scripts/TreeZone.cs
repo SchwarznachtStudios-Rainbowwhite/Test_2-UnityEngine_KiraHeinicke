@@ -42,6 +42,7 @@ public class TreeZone : MonoBehaviour
         }
     }
 
+
     /*public void OnTriggerStay(Collider other)
     {
         // look through all objects of the apple array
@@ -69,15 +70,16 @@ public class TreeZone : MonoBehaviour
                         BrokenApple[b].GetComponent<Fracture>().enabled = true;
                     }
 
-
+                    // allow Apples to fall to the ground
                     Rigidbody RB = other.gameObject.GetComponent<Rigidbody>();
                     RB.isKinematic = false;
                     RB.detectCollisions = true;
                     RB.useGravity = true;
 
+                    // broken apples are removed from applecount -> allow new to spawn
                     S_GameManager.AppleCount--;
 
-
+                    // reset the ripe counter, when their counter is over 700 (broken apples) back to 0
                     for (int j = 0; j < S_GameManager.Apple.Length; j++)
                     {
                         if (S_GameManager.AppleRipeLevel[j] > 700)
@@ -86,6 +88,7 @@ public class TreeZone : MonoBehaviour
                         }
                     }
 
+                    // call the function that destroys the broken apples
                     Invoke("DestoryBrokenApples", 5);
 
                 }
@@ -95,7 +98,7 @@ public class TreeZone : MonoBehaviour
 
     public void DestroyBrokenApples()
     {
-
+        // destroy objects with broken apple tag
         for (int l = 0; l < BrokenApple.Length; l++)
         {
             Destroy(BrokenApple[l]);

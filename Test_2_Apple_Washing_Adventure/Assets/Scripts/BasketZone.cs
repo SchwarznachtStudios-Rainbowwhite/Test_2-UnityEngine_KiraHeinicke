@@ -33,12 +33,15 @@ public class BasketZone : MonoBehaviour
             if (other.gameObject == S_GameManager.Apple[i])
             {
                 // if dirt amount is lower than 0
-                if (S_GameManager.AppleDirt[i] < 0)
+                if (S_GameManager.AppleDirt[i] < 1)
                 {
                     // destroy drag n drop script on that apple (unmovable)
+                    Destroy(other.gameObject.GetComponent<Collider>());
                     Destroy(other.gameObject.GetComponent<DragAndDrop>());
                     // change its tag
                     other.gameObject.tag = "BasketApple";
+                    // reset this objects apple dirt counter
+                    S_GameManager.AppleDirt[i] = 300;
 
                     // add object to list of collected apples
                     S_GameManager.AppleList_Basket.Add(other.gameObject);

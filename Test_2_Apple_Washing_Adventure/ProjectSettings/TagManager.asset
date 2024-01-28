@@ -8,6 +8,7 @@ TagManager:
   - BasketApple
   - Projectile
   - BrokenApple
+  - CleanedApple
   layers:
   - Default
   - TransparentFX

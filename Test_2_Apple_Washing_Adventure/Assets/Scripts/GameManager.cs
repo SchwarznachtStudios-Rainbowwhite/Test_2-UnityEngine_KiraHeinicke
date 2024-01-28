@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] Apple = new GameObject[5];
     public int AppleCount = 0;
 
-    public int[] AppleDirt = new int[5] { 400, 400, 400, 400, 400 };
+    public int[] AppleDirt = new int[5] { 300, 300, 300, 300, 300 };
 
     // Lists
     public List<GameObject> AppleList_Spawned = new List<GameObject>();
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         SpawnAppleSystem();
-
+        GameEnd();
 
   
     }
@@ -67,13 +67,14 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < Apple.Length; i++)
         {
             // randomizes a color
-            Color newColor = new Color(Random.value, Random.value, Random.value, 1.0f);
+            if (Apple[i].tag == "Apple")
+            {
+                Color newColor = new Color(Random.value, Random.value, Random.value, 1.0f);
 
-            // assigns randomized color to the apple objects
-            Apple[i].GetComponent<Renderer>().material.color = newColor;
-
+                // assigns randomized color to the apple objects
+                Apple[i].GetComponent<Renderer>().material.color = newColor;
+            }
         }
-
     }
 
     

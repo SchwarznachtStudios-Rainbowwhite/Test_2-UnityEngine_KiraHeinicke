@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class WaterZone : MonoBehaviour
 {
-// VARIABLES
+    // VARIABLES
 
-    public GameManager S_GameManager;
+    [HideInInspector] public GameManager S_GameManager;
 
     // water objects
-    public MeshRenderer _WaterClean;
-    public MeshRenderer _WaterDirty;
+    [HideInInspector] public MeshRenderer _WaterClean;
+    [HideInInspector] public MeshRenderer _WaterDirty;
+    [HideInInspector] public Collider _WaterCleanCollider;
+    [HideInInspector] public Collider _WaterDirtyCollider;
 
     public bool _IsWaterDirty = false;
 
-    private int _ApplesCleaned = 0;
+    [HideInInspector]public int _ApplesCleaned = 0;
 
     private AudioSource Audio_AppleCleaned;
 
@@ -53,9 +55,11 @@ public class WaterZone : MonoBehaviour
                     if (S_GameManager.AppleDirt[i] == 0)
                     {
                         _ApplesCleaned++;
+                        Debug.Log(_ApplesCleaned);
                         // change apple color to red 
                         Renderer AppleRenderer = S_GameManager.Apple[i].GetComponent<Renderer>(); 
                         AppleRenderer.material.color = Color.red;
+                        other.gameObject.tag = "CleanedApple";
                         // Play clean sound
                         Audio_AppleCleaned.Play();
                     }
@@ -74,31 +78,26 @@ public class WaterZone : MonoBehaviour
         {
             // Turn Water dirty
             _WaterDirty.enabled = true;
+            _WaterDirtyCollider.enabled = true;
+
             _WaterClean.enabled = false;
+            _WaterCleanCollider.enabled = false;
 
             _IsWaterDirty = true;
 
         }
     }
 
-    public void OnMouseDown()
-    {
-        // Turn water Blue
-        _WaterDirty.enabled = false;
-        _WaterClean.enabled = true;
-
-        // reset the water bool and set counter to 0 that determines if apples can be washed
-        _ApplesCleaned = 0;
-        _IsWaterDirty = false;
-
-
-    }
+    
 
     public void FindingCalls()
     {
         _WaterClean = GameObject.Find("Water_clean").GetComponent<MeshRenderer>();
         _WaterDirty = GameObject.Find("Water_dirty").GetComponent<MeshRenderer>();
+        _WaterDirtyCollider = GameObject.Find("Water_dirty").GetComponent<Collider>();
+        _WaterCleanCollider = GameObject.Find("Water_clean").GetComponent<Collider>();
         _WaterDirty.enabled = false;
+        _WaterDirtyCollider.enabled = false;
 
         Audio_AppleCleaned = GameObject.Find("Water_clean").GetComponent<AudioSource>();
     }
